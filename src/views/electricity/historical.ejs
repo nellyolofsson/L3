@@ -1,0 +1,37 @@
+
+  
+<div class="container1">
+  <div class="content">
+    <h1>Senaste 30 dagarna</h1>
+    <label for="regiondata" class="region-label">Välj region</label>
+    <select id="regiondata" name="regiondata">
+      <option value="region1">Luleå /SE1/ Norra Sverige</option>
+      <option value="region2">Sundsvall /SE2/ Norra Mellansverige</option>
+      <option value="region3">Stockholm /SE3/ Södra Mellansverige</option>
+      <option value="region4">Malmö /SE4/ Södra Sverige</option>
+    </select>
+    <div id="chartContainer">
+      <canvas id="electricityPriceChart" width="1200" height="400" data-hour-data='<%= JSON.stringify(historicalDataArray) %>'></canvas>
+    </div>
+    <button id="toggleView">
+      Tabell
+    </button>
+
+  <div id="tableContainer" style="display: none;">
+    <table>
+      <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Öre/kWh snitt</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+  </div>
+
+  </div>
+</div>
+      
+
+  

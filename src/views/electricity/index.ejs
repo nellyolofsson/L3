@@ -10,13 +10,34 @@
     </select>
 
     <% for (const regionKey in electricityPriceToday) { %>
-      <div class="region-data-container" id="regionData<%= regionKey %>" style="display: none;">
-        <p>Genomsnitt pris: <%= electricityPriceToday[regionKey].averagePrice %></p>
-        <p>Min pris: <%= electricityPriceToday[regionKey].minPrice %></p>
-        <p>Max pris: <%= electricityPriceToday[regionKey].maxPrice %></p>
-        <p>Median pris: <%= electricityPriceToday[regionKey].medianPrice %></p>
-        <p>Standardavvikelse pris: <%= electricityPriceToday[regionKey].standardDeviation %></p>
-      </div>
+      <table class="region-data-table" id="regionData<%= regionKey %>" style="display: none;">
+        <thead>
+          <tr>
+            <th>Pris</th>
+            <th>SEK per kWh</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Genomsnitt</td>
+          <td><%= electricityPriceToday[regionKey].averagePrice %></td>
+        </tr>
+        <tr>
+          <td>Minimun</td>
+          <td><%= electricityPriceToday[regionKey].minPrice %></td>
+        </tr>
+        <tr>
+          <td>Maximum</td>
+          <td><%= electricityPriceToday[regionKey].maxPrice %></td>
+        </tr>
+        <tr>
+          <td>Median</td>
+          <td><%= electricityPriceToday[regionKey].medianPrice %></td>
+        </tr>
+        <tr>
+          <td>Standardavvikelse</td>
+          <td><%= electricityPriceToday[regionKey].standardDeviation %></td>
+        </tr>
+      </table>
     <% } %>
 
     <div id="chartContainer">
@@ -26,9 +47,8 @@
     <button id="toggleView">
       Tabell
     </button>
-  
 
-  <div id="tableContainer">
+  <div id="tableContainer" style="display: none;">
     <table>
       <thead>
         <tr>
@@ -37,7 +57,6 @@
         </tr>
       </thead>
       <tbody id="tableBody">
-        <!-- Table data for the selected region will be displayed here -->
       </tbody>
     </table>
   </div>
