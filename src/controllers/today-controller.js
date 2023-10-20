@@ -1,34 +1,20 @@
-import { ElectricityPriceTodayView } from 'swedish-electricity-prices-region/src/index.js'
+import { DataService } from './dataService.js'
+import { ViewHandler } from './viewHandler.js'
 
-/**
- *
- */
 export class TodayController {
-  /**
-   *
-   */
+  constructor() {
+    this.dataService = new DataService()
+    this.viewHandler = new ViewHandler()
+  }
+
   async todayPrice (req, res, next) {
     try {
-      const electricityPriceToday = await this.#fetchElectricityPriceToday()
-      const hourData = await this.#fetchHourData()
-      this.#renderElectricityData(res, 'electricity/today', { electricityPriceToday, hourData })
+      const electricityPriceToday = await this.dataService.fetchElectricityPriceToday()
+      const hourData = await this.dataService.fetchHourData()
+      this.viewHandler.renderElectrityToday(res, { electricityPriceToday, hourData })
     } catch (error) {
       this.#handleErrors(next, error)
     }
-  }
-
-  async #fetchElectricityPriceToday () {
-    const electricityPriceTodayView = new ElectricityPriceTodayView()
-    return electricityPriceTodayView.fetchTodayDataCalculation()
-  }
-
-  async #fetchHourData () {
-    const electricityPriceTodayView = new ElectricityPriceTodayView()
-    return electricityPriceTodayView.fetchHourData()
-  }
-
-  #renderElectricityData(res, viewName, data) {
-    res.render(viewName, data)
   }
 
   #handleErrors (next, error) {
