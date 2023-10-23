@@ -82,6 +82,7 @@ region.addEventListener('change', function () {
   const selectedRegionData = document.querySelector(`#regionData${regionIndex}`)
   if (selectedRegionData) {
     selectedRegionData.style.display = 'block'
+    selectedRegionData.classList.add('region-data-table')
   }
 
   createElectricityPriceCharts(regionIndex)

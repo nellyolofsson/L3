@@ -1,4 +1,4 @@
-<div class="container1">
+<div class="container">
   <div class="content">
     <h1>Elpriser för idag</h1>
     <label for="region" class="region-label">Välj region</label>
@@ -17,6 +17,7 @@
             <th>SEK per kWh</th>
           </tr>
         </thead>
+        <tbody>
         <tr>
           <td>Genomsnitt</td>
           <td><%= electricityPriceToday[regionKey].averagePrice %></td>
@@ -37,6 +38,7 @@
           <td>Standardavvikelse</td>
           <td><%= electricityPriceToday[regionKey].standardDeviation %></td>
         </tr>
+      </tbody>
       </table>
     <% } %>
 
@@ -49,7 +51,7 @@
     </button>
 
   <div id="tableContainer" style="display: none;">
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th>Tid</th>

@@ -11,28 +11,50 @@ Welcome to the electricity price application, an app that helps you view electri
 
 It has been very fun to develope this webb-appliction and I hope you will enjoy it as much as I do.
 
-## Prerequisites
+### Prerequisites
 - Konwledge in Visual Studio Code
 
-## Installation
-To install the application, you need to first clone the project from GitHub. You find the project on GitHub at https://github.com/nellyolofsson/L3.git, then you press the code button and copy the link. Or alternatively, you can download the project as a zip file and extract it to a folder.
-Now you need to open a terminal and navigate to the folder where you want to clone the project. Then you type the following in the terminal:
-
+## Installation Instructions
+### Clone the project
+To install the application, begin by cloning the project from GitHub. You can find the project on GitHub at [https://github.com/nellyolofsson/L3.git](https://github.com/nellyolofsson/L3.git). To clone it, follow these steps:
+1. Click on the "Code" button and copy the provided URL.
+2. Open your terminal and navigate to the directory where you want to clone the project.
+3. Use the following command to clone the project:
 ```bash
 
 git clone https://github.com/nellyolofsson/L3.git
 
 ```
+### Download the project
+Or you can download the project as a zip-file and extract it to the directory where you want to clone the project.
 
-Now that you have cloned the project, you can open it in Studio Visual Code. Open the project folder where you have cloned the project.
+1. Click on the "Code" button and choose "Download ZIP".
+2. Extract the zip-file to the directory where you want to clone the project.
 
-Now you need to run npm install to install all the necessary packages. You can do this by typing the following in the terminal:
+### Open project in Visual Studio Code
+After cloning the project, you can open it in Visual Studio Code. Follow these steps to proceed:
+
+1. Open Visual Studio Code.
+2. Use the "Open Folder" feature to select the project folder where you've cloned the project.
+
+### Install packages
+Next, you'll need to install all the necessary packages for the application. Follow these steps to do so:
+
+1. In the terminal, navigate to the project folder.
+2. Run the following command to install the required packages:
+
 ```bash
 
 npm install
 
 ```
-Now you have everything installed, and you need to add a .env file, you can to that by adding a new file in the root folder that you name ".env" then you need to add the following content to the file:
+### -env file
+With all the packages installed, create a .env file in the project's root folder. Follow these steps to set up the .env file:
+
+1. Create a new file in the root folder.
+2. Name the file .env.
+3. Add the following content to the .env file:
+
 ```javascript
 
 PORT=3000
@@ -41,25 +63,28 @@ SESSION_NAME="asfdgkdfgaerr"
 SESSION_SECRET="gfdgdfgksfenffff"
 
 ```
+### Start the application
+Now, you can start the application. Follow these steps to begin:
 
-Now you should be able to start the application by typing the following in the terminal:
+1. In the terminal, navigate to the project folder.
+2. Run the following command to start the application:
+
 ```bash
 
 npm run dev
 
 ```
+### View the application
+1. In the terminal click on the webb-link to view the application.
+2. http://localhost:3000/ 
 
-Then, open the web browser and go to http://localhost:3000/ to view the application.
+That's it! You've successfully set up and launched the application.
 
 ## Usage
 Once you have started the application, you can view electricity prices for different regions in Sweden. You can see electricity prices for today, the last 30 days. It also calculates the prices in average, min, max, median and standard deviation. You can view electricity prices in both a graph and a table.
 
 ## Examples
 ![Elpriser](./images/elpriser.png)
-
-## License
-
-This project is licensed under the [ISC License](https://github.com/nellyolofsson/L2/blob/main/LICENSE.md) - see the [license file](https://github.com/nellyolofsson/L2/blob/main/LICENSE.md) for details.
 
 ## Status
 This project is currently in active development.
@@ -69,14 +94,12 @@ Here's what you can do with the app right now:
 - View electricity prices for today, including average, minimum, maximum, median, and standard deviation calculations.
 - Analyze electricity prices for the last 30 days. 
 - Enjoy color-coded visualization of prices in the last 30 days based on their value, making it easy to spot high and low prices.
-- Be aware that a style issue in the table within the price today view is on my radar for fixing.
 
 ## Future Plans
 
 I have exciting plans for the future of this project:
 
 - Implement a feature that enables you to compare electricity prices across different regions in Sweden.
-- Address the style issue in the table within the price view for a smoother user experience.
 - Enhance data visualization by introducing color-coding in the graphs. Prices will be represented in different colors to signify whether they are high or low, similar to the feature already present in the last 30 days view.
 - Expand the application's utility by providing practical use case examples. You'll soon be able to see the cost of running common appliances, such as taking a shower, charging a phone, or cooking a meal, giving you real-world insights into how electricity prices affect your daily life.
 
@@ -85,3 +108,7 @@ I have exciting plans for the future of this project:
 - swedish-electricity-prices-region on npm: This module is the backbone of my electricity price application. It allows my to fetch and calculate electricity prices in Sweden, providing historical data and various metrics for analysis.
 
 - Chart.js on npm: I utilize Chart.js to create interactive and visually appealing graphs to represent electricity price data. It's a versatile library for charting and graphing that complements my application's data visualization capabilities.
+
+## License
+
+This project is licensed under the [ISC License](https://github.com/nellyolofsson/L3/blob/main/LICENSE.md) - see the [license file](https://github.com/nellyolofsson/L3/blob/main/LICENSE.md) for details.

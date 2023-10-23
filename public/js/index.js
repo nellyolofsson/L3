@@ -11,7 +11,6 @@ function createAveragePriceChart (selectedRegionIndex) {
 
   const pointBackgroundColor = regionData.map(price => (price > 5 ? 'red' : 'green'))
   const pointRadius = regionData.map(price => (price > 10 ? 6 : 3))
-  
   chart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -64,8 +63,6 @@ function updateTable(selectedRegionIndex) {
       const date = entry.date
       const averagePrice = entry.data[selectedRegionIndex].averagePrice
       const row = document.createElement('tr')
-      
-
       appendCell(row, date)
       appendCell(row, averagePrice)
 
@@ -82,18 +79,16 @@ function appendCell (row, content) {
   cell.textContent = content
   if (!isNaN(content)) {
     const numericContent = parseFloat(content)
-    console.log(numericContent)
-
     if (numericContent > 5) {
       // Price increase (red)
-      cell.style.color = 'red';
+      cell.style.color = 'red'
     } else if (numericContent < 5) {
       // Values less than 5 (green)
-      cell.style.color = 'green';
+      cell.style.color = 'green'
     }
-  }  
-  row.appendChild(cell)
   }
+  row.appendChild(cell)
+}
 
 const regionSelect = document.getElementById('regiondata')
 regionSelect.addEventListener('change', function () {

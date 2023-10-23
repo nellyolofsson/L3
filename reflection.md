@@ -138,7 +138,6 @@ Detta följer "Clean Boundaries" i från boken genom att använda den här abstr
 # Kapitel 9 Unit Tests
 I kaptiel 9 i boken handlar det om enhetstester, just nu har jag inga enhetstester i min applikation, vilket är något jag vill lägga till i framtiden. Jag anser inte att jag har tillräckligt med kunskap om enhetstester för att kunna skriva enhetstester därför har jag manuellt testat min kravspecifikation. Jag hade dock velat ha de i min modul för oj vad mycket snabbare det hade gått att testa mina metoder. Enligt bokens regler F.I.R.S.T. ska enhetstester vara snabba, oberoende, repeterbara, självvaliderande och tidiga. Enhetstester är bra men jag anser att i min applikation så är det inte nödvändigt att ha enhetstester för att den inte ska används av någon annan än mig själv. Jag förstår syftet med enhetstester och jag kommer att använda mig av det i framtiden när jag väl har lärt mig mer om det.
 
-
 # Kapitel 10 Classes
 I kapitel 10 har jag funderat över vikten av att ha små och väldefinierade klasser i min applikation "Classes Should Be Small!". Redan när jag utvecklade min modul insåg jag att skapa små och tydliga klasser är viktigt. 
 
@@ -173,11 +172,11 @@ export class HistoricalController {
 ```
 
 # Kapitel 11 Systems
-I kapitel 11 har jag reflekterat över hur jag kan skapa en tydlig uppdelning mellan olika delar av min applikation. Jag har försökt att skapa en tydlig uppdelning mellan mina controllers/vyer. Jag kan refera till reglen "Dependency Inversion Principle" i boken som jag har försökt att följa.
+I kapitel 11 har jag reflekterat över hur jag kan skapa en tydlig uppdelning mellan olika delar av min applikation. Jag har försökt att skapa en tydlig uppdelning mellan mina controllers/vyer. Jag kan refera till reglen "Dependency Injection" i boken som jag har försökt att följa.
 
 För att minska beroenden har jag även tagit steget att skapa två nyttiga klasser: en "ViewHandler" och en "DataService". Dessa klasser hjälper till att skapa en tydlig uppdelning av ansvarsområdena i min applikation och minskar beroendet mellan olika delar av koden. I min modul har jag flera klasser som har ett tydligt ansvarsområde men som är mer beroende av varandra. 
 
-Detta har varit en intressant utmnaing för mig, och jag är nöjd över hur jag löste de med hjälp av Clean Code samt din vägledning som lärare. Jag hoppas att mina beslut och implementeringar är korrekta  och att jag har förstått reglerna rätt.
+Detta har varit en intressant utmnaing för mig, och jag är nöjd över hur jag löste de med hjälp av Clean Code samt din vägledning som lärare. Jag hoppas att mina beslut och implementeringar är korrekta och att jag har förstått alla reglerna rätt.
 
 ```javascript
 // Min viewHandler som hanterar mina vyer
