@@ -5,20 +5,15 @@ import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { router } from './routes/router.js'
 import { createServer } from 'node:http'
-import { contentSecurityPolicy } from 'helmet'
 import helmet from 'helmet'
 
 try {
-
   const app = express()
-
   const httpServer = createServer(app)
 
   const directoryFullName = dirname(fileURLToPath(import.meta.url))
 
-
   const baseURL = process.env.BASE_URL || '/'
-
 
   app.use(
     helmet.contentSecurityPolicy({
@@ -29,7 +24,6 @@ try {
       }
     })
   )
-  
 
   app.set('view engine', 'ejs')
   app.set('views', join(directoryFullName, 'views'))
@@ -43,19 +37,19 @@ try {
   app.use(express.static(join(directoryFullName, '..', 'public')))
 
   const sessionOptions = {
-    name: process.env.SESSION_NAME, 
-    secret: process.env.SESSION_SECRET, 
-    resave: false, 
-    saveUninitialized: false, 
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24, 
+      maxAge: 1000 * 60 * 60 * 24,
       sameSite: 'strict'
     }
   }
 
   if (app.get('env') === 'production') {
-    app.set('trust proxy', 1) 
-    sessionOptions.cookie.secure = true 
+    app.set('trust proxy', 1)
+    sessionOptions.cookie.secure = true
   }
 
   app.use(session(sessionOptions))
@@ -72,14 +66,12 @@ try {
 
   app.use('/', router)
   app.use(function (err, req, res, next) {
- 
     if (err.status === 404) {
       return res
         .status(404)
         .sendFile(join(directoryFullName, 'views', 'errors', '404.html'))
     }
 
-    
     if (req.app.get('env') !== 'development') {
       return res
         .status(500)

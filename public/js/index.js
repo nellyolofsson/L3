@@ -4,13 +4,14 @@ const ctx = canvas.getContext('2d')
 const tableBody = document.getElementById('tableBody')
 let chart
 
-/**
- * Create the average price chart for a selected region.
- */
 function createAveragePriceChart (selectedRegionIndex) {
   destroyChart()
   const { dates, regionData } = getDatesAndRegionData(selectedRegionIndex)
+  const borderColor = 'rgba(239, 239, 240,1)'
 
+  const pointBackgroundColor = regionData.map(price => (price > 5 ? 'red' : 'green'))
+  const pointRadius = regionData.map(price => (price > 10 ? 6 : 3))
+  
   chart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -19,7 +20,9 @@ function createAveragePriceChart (selectedRegionIndex) {
         {
           label: `Snitt SEK per kWh - Region ${selectedRegionIndex + 1}`,
           data: regionData,
-          backgroundColor: 'rgba(0, 128, 0, 0.5)'
+          borderColor: borderColor,
+          pointBackgroundColor: pointBackgroundColor,
+          pointRadius: pointRadius
         }
       ]
     },
@@ -61,6 +64,7 @@ function updateTable(selectedRegionIndex) {
       const date = entry.date
       const averagePrice = entry.data[selectedRegionIndex].averagePrice
       const row = document.createElement('tr')
+      
 
       appendCell(row, date)
       appendCell(row, averagePrice)
@@ -76,8 +80,20 @@ function updateTable(selectedRegionIndex) {
 function appendCell (row, content) {
   const cell = document.createElement('td')
   cell.textContent = content
+  if (!isNaN(content)) {
+    const numericContent = parseFloat(content)
+    console.log(numericContent)
+
+    if (numericContent > 5) {
+      // Price increase (red)
+      cell.style.color = 'red';
+    } else if (numericContent < 5) {
+      // Values less than 5 (green)
+      cell.style.color = 'green';
+    }
+  }  
   row.appendChild(cell)
-}
+  }
 
 const regionSelect = document.getElementById('regiondata')
 regionSelect.addEventListener('change', function () {

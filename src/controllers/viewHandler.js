@@ -1,6 +1,3 @@
-/**
- *
- */
 export class ViewHandler {
   renderElectrityToday(res, data) {
     res.render('electricity/today', data)
