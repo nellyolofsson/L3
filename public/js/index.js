@@ -1,18 +1,15 @@
 const canvas = document.getElementById('electricityPriceChart')
 const hourData = JSON.parse(canvas.getAttribute('data-hour-data'))
 const ctx = canvas.getContext('2d')
-const tableBody = document.getElementById('tableBody');
+const tableBody = document.getElementById('tableBody')
 let chart
 
-
-
-function createAveragePriceChart(selectedRegionIndex) {
-  if (chart) {
-    chart.destroy()
-  }
-
-  const dates = hourData.map((entry) => entry.date)
-  const regionData = hourData.map((entry) => entry.data[selectedRegionIndex].averagePrice)
+/**
+ * Create the average price chart for a selected region.
+ */
+function createAveragePriceChart (selectedRegionIndex) {
+  destroyChart()
+  const { dates, regionData } = getDatesAndRegionData(selectedRegionIndex)
 
   chart = new Chart(ctx, {
     type: 'line',
@@ -34,51 +31,63 @@ function createAveragePriceChart(selectedRegionIndex) {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'SEK per kWh',
-          },
-        },
-      },
-    },
+            text: 'SEK per kWh'
+          }
+        }
+      }
+    }
   })
 }
 
-
-function updateTable(selectedRegionIndex) {
-  tableBody.innerHTML = '';
-
-  if (hourData && hourData.length > 0) {
-    const last31DaysData = hourData.slice(-31);
-
-    last31DaysData.forEach(entry => {
-      const date = entry.date;
-      const averagePrice = entry.data[selectedRegionIndex].averagePrice;
-
-      const row = document.createElement('tr');
-
-      const dateCell = document.createElement('td');
-      dateCell.textContent = date;
-      row.appendChild(dateCell);
-
-      const priceCell = document.createElement('td');
-      priceCell.textContent = averagePrice;
-      row.appendChild(priceCell);
-
-      tableBody.appendChild(row);
-    });
+function destroyChart () {
+  if (chart) {
+    chart.destroy()
   }
 }
 
+function getDatesAndRegionData (selectedRegionIndex) {
+  const dates = hourData.map((entry) => entry.date)
+  const regionData = hourData.map((entry) => entry.data[selectedRegionIndex].averagePrice)
+  return { dates, regionData }
+}
 
+function updateTable(selectedRegionIndex) {
+  tableBody.innerHTML = ''
 
-const regionSelect = document.getElementById('regiondata');
+  if (hourData && hourData.length > 0) {
+    const last31DaysData = hourData.slice(-30)
+
+    last31DaysData.forEach((entry) => {
+      const date = entry.date
+      const averagePrice = entry.data[selectedRegionIndex].averagePrice
+      const row = document.createElement('tr')
+
+      appendCell(row, date)
+      appendCell(row, averagePrice)
+
+      tableBody.appendChild(row)
+    })
+  }
+}
+
+/**
+ * Create and append a table cell with text content to a row.
+ */
+function appendCell (row, content) {
+  const cell = document.createElement('td')
+  cell.textContent = content
+  row.appendChild(cell)
+}
+
+const regionSelect = document.getElementById('regiondata')
 regionSelect.addEventListener('change', function () {
-  const selectedRegionValue = regionSelect.value;
-  const selectedRegionIndex = parseInt(selectedRegionValue.replace("region", "")) - 1;
-  createAveragePriceChart(selectedRegionIndex);
-  updateTable(selectedRegionIndex);
-});
+  const selectedRegionValue = regionSelect.value
+  const selectedRegionIndex = parseInt(selectedRegionValue.replace('region', '')) - 1
+  createAveragePriceChart(selectedRegionIndex)
+  updateTable(selectedRegionIndex)
+})
 
 document.addEventListener('DOMContentLoaded', function () {
-  createAveragePriceChart(0);
-  updateTable(0);
-});
+  createAveragePriceChart(0)
+  updateTable(0)
+})

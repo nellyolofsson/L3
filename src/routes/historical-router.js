@@ -5,4 +5,4 @@ export const router = express.Router()
 
 const controller = new HistoricalController()
 
-router.get('/historical', (req, res, next) => controller.electricityHistorical(req, res, next))
+router.get('/historical', (req, res, next) => controller.historicalPrice(req, res, next))

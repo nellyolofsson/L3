@@ -9,7 +9,7 @@ I kapitel 2 har jag reflekterat över av att använda meningsfulla namn i min ko
 ```
 
 # Kapitel 3 Functions
-I kapitel 3 har jag stött på utmaningen att skapa funktioner som följer principen "Do One Thing." Det har varit en utmaning, och jag har verkligen försökt att bryta ner mina funktioner till mindre, självständiga delar. Jag har lyckats med att skapa några små funktioner, som clearTable, som enbart har en specifik uppgift. Ett tydligt exempel är när jag tidigare hade kod som tableBody.innerHTML = '' inbäddad i en annan funktion, och jag insåg att jag ville ha den i en separat funktion eftersom den bara utför en uppgift.
+I kapitel 3 har jag stött på utmaningen att skapa funktioner som följer reglen "Do One Thing." Det har varit en utmaning, och jag har verkligen försökt att bryta ner mina funktioner till mindre, självständiga delar. Jag har lyckats med att skapa några små funktioner, som clearTable, som enbart har en specifik uppgift. Ett tydligt exempel är när jag tidigare hade kod som tableBody.innerHTML = '' inbäddad i en annan funktion, och jag insåg att jag ville ha den i en separat funktion eftersom den bara utför en uppgift.
 
 ```javascript
 // "Do One Thing" från min appliaktion
@@ -33,11 +33,11 @@ I kapitel 4 reflekterade jag över användningen av kommentarer i min applikatio
 
 Jag har dock upplevt en viss störning när jag använder ESLint, som flaggar för uteblivna kommentarer. 
 
-![kommentar](./images/kommentarer.png)
+![kommentar](./images/kommentar.png)
 
 
 # Kapitel 5 Formatting
-I kapitel 5 har jag arbetat med att förbättra formateringen av min kod. Jag har lyckats följa principerna för "Vertical Formatting" och "Horizontal Formatting" för att göra koden mer läsbar och lätt att följa. Jag har särskilt fokuserat på att hålla min kod väl strukturerad och organiserad.
+I kapitel 5 har jag arbetat med att förbättra formateringen av min kod. Jag har lyckats följa reglerna  "Vertical Formatting" och "Horizontal Formatting" för att göra koden mer läsbar och lätt att följa. Jag har särskilt fokuserat på att hålla min kod väl strukturerad och organiserad.
 
 Mitt huvudfokus har varit att använda små och väldefinierade klasser och funktioner för att undvika att ha stora och svåröverskådliga kodrader. Ett konkret exempel på detta är en ändring jag gjorde i min modul, där jag bröt ut en stor klass i två mindre klasser. Denna omstrukturering har resulterat i en mer läsbar kod som är enklare att följa och underhålla. 
 
@@ -118,7 +118,7 @@ const IElectricityPriceHistoricalView = {
 }
 export default IElectricityPriceHistoricalView
 
-// Jag har även skapat en wrapper-klass, ElectricityPriceHistoricalViewWrapper, som använder detta gränssnitt för att hämta data från min modul.
+// Jag har även skapat en wrapper-klass, ElectricityPriceHistoricalViewWrapper, som använder detta gränssnitt för att hämta data.
 import IElectricityPriceHistoricalView from './IElectricityPriceHistoricalView.js'
 
 export class ElectricityPriceHistoricalViewWrapper {
